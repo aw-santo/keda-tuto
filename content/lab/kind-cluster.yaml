@@ -1,0 +1,17 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: keda-lab
+nodes:
+  - role: control-plane
+    # host:30080 -> node:30080 so the Kafka UI is reachable from macOS without
+    # a port-forward. kind node IPs are NOT routable from the macOS host, so
+    # extraPortMappings (or port-forward) is the only way in.
+    extraPortMappings:
+      - containerPort: 30080
+        hostPort: 30080
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+  # Two workers so you can watch KEDA-created pods spread across nodes
+  # (`kubectl get pods -o wide`). They add no real compute, ~250 MiB each.
+  - role: worker
+  - role: worker

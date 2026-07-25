@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-consumer
+  namespace: lab
+spec:
+  replicas: 1                 # KEDA/HPA owns this field from here on
+  selector:
+    matchLabels:
+      app: orders-consumer
+  template:
+    metadata:
+      labels:
+        app: orders-consumer
+    spec:
+      # Must exceed PROCESS_DELAY_MS so the in-flight message finishes and
+      # consumer.close() can send LeaveGroup -> fast rebalance instead of a
+      # session-timeout stall.
+      terminationGracePeriodSeconds: 20
+      containers:
+        - name: consumer
+          image: keda-lab-client:0.4
+          imagePullPolicy: IfNotPresent   # REQUIRED for kind-loaded local images
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: KAFKA_BOOTSTRAP
+              value: "kafka-0.kafka.lab.svc.cluster.local:9092"
+            - name: KAFKA_TOPIC
+              value: "orders"
+            - name: KAFKA_GROUP
+              value: "orders-workers"
+            - name: PROCESS_DELAY_MS
+              value: "250"
+          resources:
+            requests:
+              cpu: 25m
+              memory: 48Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: orders-so
+  namespace: lab
+spec:
+  scaleTargetRef:
+    name: orders-consumer
+  pollingInterval: 5          # default 30 - too slow to watch
+  cooldownPeriod: 30          # default 300 - you'd wait 5min for scale-to-zero
+  minReplicaCount: 1          # set 0 to demo scale-to-zero
+  maxReplicaCount: 12         # == partition count; more would sit idle
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleUp:
+          stabilizationWindowSeconds: 0
+          policies:
+            - type: Percent
+              value: 100
+              periodSeconds: 10
+        scaleDown:
+          stabilizationWindowSeconds: 15   # default 300 - THE slow-scale-in culprit
+          policies:
+            - type: Percent
+              value: 100
+              periodSeconds: 15
+  triggers:
+    - type: kafka             # stable Sarama scaler (NOT "apache-kafka", which is experimental)
+      metadata:
+        bootstrapServers: kafka-0.kafka.lab.svc.cluster.local:9092
+        consumerGroup: orders-workers
+        topic: orders
+        lagThreshold: "100"
+        activationLagThreshold: "0"
+        offsetResetPolicy: earliest   # MUST match the consumer's auto.offset.reset
