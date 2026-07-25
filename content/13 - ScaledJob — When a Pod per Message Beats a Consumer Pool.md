@@ -1,5 +1,5 @@
 ---
-title: ScaledJob — When a Pod per Message Beats a Consumer Pool
+title: 13 - ScaledJob — When a Pod per Message Beats a Consumer Pool
 tags:
   - keda
   - kafka

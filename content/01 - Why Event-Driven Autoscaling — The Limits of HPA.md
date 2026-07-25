@@ -1,5 +1,5 @@
 ---
-title: Why Event-Driven Autoscaling — The Limits of HPA
+title: 01 - Why Event-Driven Autoscaling — The Limits of HPA
 tags:
   - keda
   - kubernetes

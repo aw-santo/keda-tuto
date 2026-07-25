@@ -1,5 +1,5 @@
 ---
-title: LAB 1 — Local Cluster, Kafka & KEDA from Scratch
+title: 05 - LAB 1 — Local Cluster, Kafka & KEDA from Scratch
 tags:
   - keda
   - kafka

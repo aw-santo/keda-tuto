@@ -1,5 +1,5 @@
 ---
-title: The Kafka Scaler — Every Field & the Replica Math
+title: 07 - The Kafka Scaler — Every Field & the Replica Math
 tags:
   - keda
   - kafka

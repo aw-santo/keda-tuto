@@ -1,5 +1,5 @@
 ---
-title: The ScaledObject CRD, End to End
+title: 04 - The ScaledObject CRD, End to End
 tags:
   - keda
   - kubernetes

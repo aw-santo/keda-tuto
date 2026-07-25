@@ -1,5 +1,5 @@
 ---
-title: KEDA Architecture — Operator, Metrics Adapter & the HPA It Owns
+title: 03 - KEDA Architecture — Operator, Metrics Adapter & the HPA It Owns
 tags:
   - keda
   - kubernetes

@@ -1,5 +1,5 @@
 ---
-title: Kafka Consumer Groups, Partitions & Rebalancing
+title: 02 - Kafka Consumer Groups, Partitions & Rebalancing
 tags:
   - keda
   - kafka

@@ -1,5 +1,5 @@
 ---
-title: Scale-to-Zero & Activation
+title: 08 - Scale-to-Zero & Activation
 tags:
   - keda
   - kafka

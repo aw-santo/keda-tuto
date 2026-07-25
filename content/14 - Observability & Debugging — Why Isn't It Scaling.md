@@ -1,5 +1,5 @@
 ---
-title: Observability & Debugging — Why Isn't It Scaling
+title: 14 - Observability & Debugging — Why Isn't It Scaling
 tags:
   - keda
   - observability

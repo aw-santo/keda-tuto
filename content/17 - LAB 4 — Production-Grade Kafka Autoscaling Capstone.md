@@ -1,5 +1,5 @@
 ---
-title: LAB 4 — Production-Grade Kafka Autoscaling Capstone
+title: 17 - LAB 4 — Production-Grade Kafka Autoscaling Capstone
 tags:
   - keda
   - kafka

@@ -1,5 +1,5 @@
 ---
-title: Multiple Triggers, Scaling Modifiers & Fallback
+title: 11 - Multiple Triggers, Scaling Modifiers & Fallback
 tags:
   - keda
   - kafka

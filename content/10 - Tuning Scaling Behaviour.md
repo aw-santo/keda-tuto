@@ -1,5 +1,5 @@
 ---
-title: Tuning Scaling Behaviour
+title: 10 - Tuning Scaling Behaviour
 tags:
   - keda
   - kafka

@@ -1,5 +1,5 @@
 ---
-title: LAB 2 — Your First Kafka ScaledObject
+title: 06 - LAB 2 — Your First Kafka ScaledObject
 tags:
   - keda
   - kafka

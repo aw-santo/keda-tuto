@@ -1,5 +1,5 @@
 ---
-title: Authentication — TriggerAuthentication, SASL, TLS & MSK IAM
+title: 12 - Authentication — TriggerAuthentication, SASL, TLS & MSK IAM
 tags:
   - keda
   - kafka
