@@ -28,7 +28,7 @@ configuration:
         dark: "#2b2b2b"
         secondary: "#326de6"
         tertiary: "#5478e0"
-        highlight: rgba(50, 109, 230, 0.1)
+        highlight: rgba(50, 109, 230, 0.18)
         textHighlight: "#a9c6ff88"
       darkMode:
         light: "#161618"
@@ -38,7 +38,7 @@ configuration:
         dark: "#ebebec"
         secondary: "#719bea"
         tertiary: "#5478e0"
-        highlight: rgba(113, 155, 234, 0.15)
+        highlight: rgba(113, 155, 234, 0.22)
         textHighlight: "#3a5fb388"
 plugins:
   - source: github:quartz-community/created-modified-date

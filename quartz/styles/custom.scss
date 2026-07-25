@@ -1,3 +1,21 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// Quartz's stock base.scss keeps every heading (h1-h6) and thead in the same
+// neutral --dark color — a config-level secondary/tertiary color never actually
+// reaches a heading by default, so it reads as "no effect" even when correctly
+// configured. This layer compiles unlayered (after base.scss's @layer quartz-base),
+// so it wins the cascade without needing !important anywhere.
+.article-title {
+  color: var(--tertiary);
+}
+
+.page-title {
+  color: var(--tertiary);
+}
+
+article {
+  h2 {
+    border-left: 3px solid var(--tertiary);
+    padding-left: 0.6rem;
+  }
+}
